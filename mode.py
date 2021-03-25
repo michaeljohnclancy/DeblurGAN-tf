@@ -1,5 +1,6 @@
-import os
-import tensorflow as tf
+import os 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from PIL import Image
 import numpy as np
 import time
@@ -52,11 +53,10 @@ def train(args, model, sess, saver):
                 print("D_loss : %0.4f, \t G_loss : %0.4f"%(D_loss, G_loss))
                 print("Elpased time : %0.4f"%(e_time - s_time))
             if ((epoch) % args.model_save_freq ==0):
-                saver.save(sess, './model/DeblurrGAN', global_step = epoch, write_meta_graph = False)
-            
+                saver.save(sess, f'{args.model_path}/DeblurrGAN', global_step = epoch, write_meta_graph = False)
             epoch += 1
 
-        saver.save(sess, './model/DeblurrGAN_last', write_meta_graph = False)
+        saver.save(sess, f'{args.model_path}/DeblurrGAN_last', write_meta_graph = False)
     
     else:
         while epoch < args.max_epoch:
@@ -82,11 +82,11 @@ def train(args, model, sess, saver):
                 print("D_loss : %0.4f, \t G_loss : %0.4f"%(D_loss, G_loss))
                 print("Elpased time : %0.4f"%(e_time - s_time))
             if ((epoch) % args.model_save_freq ==0):
-                saver.save(sess, './model/DeblurrGAN', global_step = epoch, write_meta_graph = False)
+                saver.save(sess, f'{args.model_path}/DeblurrGAN', global_step = epoch, write_meta_graph = False)
             
             epoch += 1
 
-        saver.save(sess, './model/DeblurrGAN_last', global_step = epoch, write_meta_graph = False)
+        saver.save(sess, f'{args.model_path}/DeblurrGAN_last', global_step = epoch, write_meta_graph = False)
         
     if args.test_with_train:
         f.close()

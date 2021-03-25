@@ -1,5 +1,6 @@
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 import numpy as np
 import time
@@ -29,7 +30,7 @@ class Vgg19:
             vgg19_npy_path = path
             print(vgg19_npy_path)
 
-        self.data_dict = np.load(vgg19_npy_path, encoding='latin1').item()
+        self.data_dict = np.load(vgg19_npy_path, encoding='latin1', allow_pickle=True).item()
         print("npy file loaded")
 
     def build(self, rgb):

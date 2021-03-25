@@ -1,8 +1,10 @@
-import tensorflow as tf
 from ops import *
 import numpy as np
 from data_loader import dataloader
 from vgg19 import Vgg19
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 class Deblur_Net():

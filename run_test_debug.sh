@@ -1,0 +1,1 @@
+python main.py --mode test_only --pre_trained_model models/deblur_10k_debug/DeblurrGAN_last --test_Blur_path images/test.debug/blur --test_Sharp_path images/test.debug/sharp  --result_path results/deblur_10k_debug
